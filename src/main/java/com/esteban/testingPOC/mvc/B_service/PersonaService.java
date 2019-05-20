@@ -10,11 +10,12 @@ import java.util.Optional;
 @Service
 public class PersonaService {
 
+    @Autowired
     PersonaRepository repository;
 
     public Persona getPersona(){
-        Optional<Persona> persona = repository.findById(1L);
-        return persona.get();
+        Optional<Persona> optional = repository.findById(1L);
+        return optional.get();
     }
 
 }

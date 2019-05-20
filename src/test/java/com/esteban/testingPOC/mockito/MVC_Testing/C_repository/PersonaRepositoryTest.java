@@ -22,10 +22,10 @@ public class PersonaRepositoryTest {
 
     @Test
     public void m1(){
-        Optional<Persona> personaOptional = repository.findById(1L);
+        Optional<Persona> personaOptional = repository.findById(2L);
         Persona persona = personaOptional.get();
 
-        assertThat(persona, is(new Persona("Juan","Perez")));
+        assertThat(persona, is(new Persona("JuanTest","PerezTest")));
     }
 
 }

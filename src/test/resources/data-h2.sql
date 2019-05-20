@@ -1,1 +1,1 @@
-insert into PERSONA (id,nombre, apellido) values (1,'Juan', 'Perez')
+insert into PERSONA (id,nombre, apellido) values (2,'JuanTest', 'PerezTest')
