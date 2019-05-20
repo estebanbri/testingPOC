@@ -6,6 +6,7 @@ import com.esteban.testingPOC.mvc.B_service.PersonaService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,6 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class) // SpringRunner: load Spring ApplicationContext and having beans @Autowired into your test instance
 @WebMvcTest(PersonaController.class)  // only loads web-layer (@RestController), no va loader @Service ni @Repository no son loaded por ende no te queda otra opcion que Mockear el @Service sino te explota)
+@AutoConfigureMockMvc
 public class PersonaControllerTest {
 
     @Autowired
@@ -35,14 +37,14 @@ public class PersonaControllerTest {
     PersonaService service;
 
     @Test
-    public void m1() throws Exception {
+    public void m123() throws Exception {
 
         when(service.getPersona()).thenReturn(new Persona("Soy","Mock"));
 
         MvcResult mvcResult = mockMvc.perform(get("/persona"))
                                      .andReturn();
 
-        assertThat(mvcResult.getResponse().getContentAsString(), is("{\"nombre\":\"Soy\",\"apellido\":\"Mock\"}"));
+        assertThat(mvcResult.getResponse().getContentAsString(), is("{\"id\":null,\"nombre\":\"Soy\",\"apellido\":\"Mock\"}"));
     }
 
     // Using Response Matchers
