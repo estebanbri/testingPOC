@@ -1,7 +1,14 @@
 package com.esteban.testingPOC.entity;
 
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Persona {
 
+    @Id
+    private Long id;
     private String nombre;
     private String apellido;
 
@@ -11,6 +18,14 @@ public class Persona {
     public Persona(String nombre, String apellido) {
         this.nombre = nombre;
         this.apellido = apellido;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
